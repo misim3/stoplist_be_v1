@@ -12,9 +12,7 @@ import d.stoplist_be.domain.user.repository.UserRepository;
 import d.stoplist_be.domain.user_persona_mapping.entity.UserPersonaMapping;
 import d.stoplist_be.domain.user_persona_mapping.repository.UserPersonaRepository;
 import jakarta.persistence.EntityNotFoundException;
-import java.util.Comparator;
 import java.util.List;
-import java.util.NoSuchElementException;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -24,7 +22,8 @@ public class PersonaService {
     private PersonaRepository personaRepository;
     private UserPersonaRepository userPersonaRepository;
 
-    PersonaService(PersonaRepository personaRepository, UserPersonaRepository userPersonaRepository) {
+    PersonaService(UserRepository userRepository, PersonaRepository personaRepository, UserPersonaRepository userPersonaRepository) {
+        this.userRepository = userRepository;
         this.personaRepository = personaRepository;
         this.userPersonaRepository = userPersonaRepository;
     }
@@ -54,13 +53,13 @@ public class PersonaService {
         );
     }
 
-    public SelectPersonaResponseDto updatePersona(Long userId, String personaName) {
+    public SelectPersonaResponseDto updatePersona(Long userId, Long personaId) {
 
         User user = userRepository.findById(userId).orElseThrow(() -> new EntityNotFoundException("Not found User By userId for PersonaService.updatePersona"));
-        Persona persona = personaRepository.findByName(personaName).orElseThrow(() -> new EntityNotFoundException("Not found Persona By name for PersonaService.updatePersona"));
+        Persona persona = personaRepository.findById(personaId).orElseThrow(() -> new EntityNotFoundException("Not found Persona By personaId for PersonaService.updatePersona"));
 
         userPersonaRepository.save(new UserPersonaMapping(userId, persona.getId()));
 
-        return new SelectPersonaResponseDto(user.getNickname(), personaName);
+        return new SelectPersonaResponseDto(user.getNickname(), persona.getName());
     }
 }

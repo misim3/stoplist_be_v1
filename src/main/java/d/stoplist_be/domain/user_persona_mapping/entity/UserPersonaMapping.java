@@ -19,6 +19,8 @@ public class UserPersonaMapping extends BaseEntity {
     @Column
     private Long personaId;
 
+    public UserPersonaMapping() {}
+
     public UserPersonaMapping(Long userId, Long personaId) {
         this.userId = userId;
         this.personaId = personaId;

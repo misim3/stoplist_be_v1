@@ -1,5 +1,8 @@
 package d.stoplist_be.domain.persona;
 
+import lombok.Data;
+
+@Data
 public class PersonaInfo {
 
     private String personaName;

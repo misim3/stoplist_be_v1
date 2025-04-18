@@ -4,11 +4,13 @@ import d.stoplist_be.domain.persona.entity.Persona;
 import d.stoplist_be.domain.user.entity.User;
 
 public record UserResponse(
+        Long userId,
         String nickname,
         String personaName
 ) {
     public static UserResponse fromEntity(User user, Persona persona) {
         return new UserResponse(
+                user.getId(),
                 user.getNickname(),
                 persona.getName()
         );
