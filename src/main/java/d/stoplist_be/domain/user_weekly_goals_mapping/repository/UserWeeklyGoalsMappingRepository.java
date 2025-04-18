@@ -8,4 +8,6 @@ import java.util.List;
 
 public interface UserWeeklyGoalsMappingRepository extends JpaRepository<UserWeeklyGoalsMapping, Long> {
     List<UserWeeklyGoalsMapping> findByUserIdAndStatus(Long userId, Status status);
+
+    List<UserWeeklyGoalsMapping> findAllByGoalsCount(int i);
 }

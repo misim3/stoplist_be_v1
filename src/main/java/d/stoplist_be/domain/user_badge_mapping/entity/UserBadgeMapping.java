@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 
 @Entity
-@Table(name = "user_badge_mapping")
+@Table(name = "user_badge_mappings")
 @Getter
 public class UserBadgeMapping extends BaseEntity {
     @Id
@@ -17,4 +17,9 @@ public class UserBadgeMapping extends BaseEntity {
 
     @Column
     private Long badgeId;
+
+    public UserBadgeMapping(Long userId, Long badgeId) {
+        this.userId = userId;
+        this.badgeId = badgeId;
+    }
 }
