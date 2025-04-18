@@ -9,9 +9,9 @@ spring:
       connection-timeout: 10000
       max-lifetime: 60000
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/stoplist?characterEncoding=UTF-8&serverTimezone=UTC
-    username: misim3
-    password: misim3443
+    url: jdbc:mysql://stoplist.c3qsy2eywn3l.ap-northeast-2.rds.amazonaws.com:3306/stoplist?characterEncoding=UTF-8&serverTimezone=UTC
+    username: admin
+    password: SpringBoot97!!
   jpa:
     hibernate:
       ddl-auto: update

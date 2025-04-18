@@ -28,7 +28,7 @@ public class PersonaController {
         return new ApiResponse<>(200, "ok", personaService.getPersonaList());
     }
 
-    @GetMapping("/user-info")
+    @GetMapping("/user/info")
     public ApiResponse<UserInfoResponseDto> getUserInfo(@RequestParam Long userId) {
         return new ApiResponse<>(200, "ok", personaService.searchPersona(userId));
     }

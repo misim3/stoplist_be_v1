@@ -1,8 +1,10 @@
 package d.stoplist_be.domain.weekly_goal.entity;
 
 import jakarta.persistence.*;
+import lombok.Getter;
 
 @Entity
+@Getter
 @Table(name = "weekly_goals")
 public class WeeklyGoal {
     @Id

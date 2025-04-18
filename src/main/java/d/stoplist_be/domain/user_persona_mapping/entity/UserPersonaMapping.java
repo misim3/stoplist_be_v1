@@ -1,12 +1,18 @@
 package d.stoplist_be.domain.user_persona_mapping.entity;
 
+import d.stoplist_be.domain.user_weekly_goals_mapping.entity.Status;
 import d.stoplist_be.global.entity.BaseEntity;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "user_persona_mapping")
 @Getter
+@Builder
+@AllArgsConstructor
 public class UserPersonaMapping extends BaseEntity {
 
     @Id
@@ -18,6 +24,11 @@ public class UserPersonaMapping extends BaseEntity {
 
     @Column
     private Long personaId;
+
+    @Column
+    @Enumerated(EnumType.STRING)
+    @Builder.Default
+    private Status status = Status.ON;
 
     public UserPersonaMapping() {}
 

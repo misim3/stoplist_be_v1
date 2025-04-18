@@ -2,11 +2,15 @@ package d.stoplist_be.domain.user_weekly_goals_mapping.entity;
 
 import d.stoplist_be.global.entity.BaseEntity;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "user_weekly_goals_mapping")
 @Getter
+@NoArgsConstructor
+@AllArgsConstructor
 public class UserWeeklyGoalsMapping extends BaseEntity {
 
     @Id
@@ -25,4 +29,23 @@ public class UserWeeklyGoalsMapping extends BaseEntity {
 
     @Column
     private int goalsCount;
+
+    public UserWeeklyGoalsMapping(Long userId, Long weeklyGoalsId) {
+        this.userId = userId;
+        this.weeklyGoalsId = weeklyGoalsId;
+        this.status = Status.ON;
+        this.goalsCount = 0;
+    }
+
+    public void upCount() {
+        this.goalsCount++;
+    }
+
+    public void downCount() {
+        this.goalsCount--;
+    }
+
+    public void complete() {
+        this.status = Status.COMPLETED;
+    }
 }
