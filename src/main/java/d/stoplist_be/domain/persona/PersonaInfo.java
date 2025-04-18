@@ -5,10 +5,12 @@ import lombok.Data;
 @Data
 public class PersonaInfo {
 
+    private Long personaId;
     private String personaName;
     private boolean flag;
 
-    public PersonaInfo(String personaName, boolean flag) {
+    public PersonaInfo(Long personaId, String personaName, boolean flag) {
+        this.personaId = personaId;
         this.personaName = personaName;
         this.flag = flag;
     }

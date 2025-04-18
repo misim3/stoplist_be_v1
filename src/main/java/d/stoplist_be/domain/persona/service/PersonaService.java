@@ -38,7 +38,7 @@ public class PersonaService {
             .toList();
 
         List<PersonaInfo> personaInfos = personaList.stream()
-            .map(persona -> new PersonaInfo(
+            .map(persona -> new PersonaInfo(persona.getId(),
                 persona.getName(),
                 userPersonaIds.contains(persona.getId())))
             .toList();
