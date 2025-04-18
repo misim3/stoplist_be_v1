@@ -2,9 +2,11 @@ package d.stoplist_be.domain.user_weekly_goals_mapping.entity;
 
 import d.stoplist_be.global.entity.BaseEntity;
 import jakarta.persistence.*;
+import lombok.Getter;
 
 @Entity
 @Table(name = "user_weekly_goals_mapping")
+@Getter
 public class UserWeeklyGoalsMapping extends BaseEntity {
 
     @Id

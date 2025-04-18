@@ -2,9 +2,11 @@ package d.stoplist_be.domain.user_persona_mapping.entity;
 
 import d.stoplist_be.global.entity.BaseEntity;
 import jakarta.persistence.*;
+import lombok.Getter;
 
 @Entity
 @Table(name = "user_persona_mapping")
+@Getter
 public class UserPersonaMapping extends BaseEntity {
 
     @Id
@@ -16,4 +18,11 @@ public class UserPersonaMapping extends BaseEntity {
 
     @Column
     private Long personaId;
+
+    public static UserPersonaMapping toEntity(Long userId, Long personaId) {
+        UserPersonaMapping userPersonaMapping = new UserPersonaMapping();
+        userPersonaMapping.userId = userId;
+        userPersonaMapping.personaId = personaId;
+        return userPersonaMapping;
+    }
 }
