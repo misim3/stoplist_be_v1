@@ -2,6 +2,7 @@ package d.stoplist_be.domain.persona.controller;
 
 import d.stoplist_be.domain.persona.PersonaListResponseDto;
 import d.stoplist_be.domain.persona.SelectPersonaRequestDto;
+import d.stoplist_be.domain.persona.SelectPersonaResponseDto;
 import d.stoplist_be.domain.persona.UserInfoResponseDto;
 import d.stoplist_be.domain.persona.service.PersonaService;
 import d.stoplist_be.global.dto.ApiResponse;
@@ -33,7 +34,7 @@ public class PersonaController {
     }
 
     @PostMapping("/persona")
-    public ApiResponse<?> selectPersona(@RequestBody SelectPersonaRequestDto requestDto) {
-        return new ApiResponse<>(200, "ok", personaService.updatePersona(requestDto.userId(), requestDto.personaName()));
+    public ApiResponse<SelectPersonaResponseDto> selectPersona(@RequestBody SelectPersonaRequestDto requestDto) {
+        return new ApiResponse<>(200, "ok", personaService.updatePersona(requestDto.userId(), requestDto.personaId()));
     }
 }

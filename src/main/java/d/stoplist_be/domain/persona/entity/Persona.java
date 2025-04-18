@@ -8,6 +8,7 @@ import lombok.Getter;
 @Getter
 @Table(name = "personas")
 public class Persona extends BaseEntity {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
