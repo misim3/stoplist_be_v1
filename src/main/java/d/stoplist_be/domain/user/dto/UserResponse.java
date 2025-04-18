@@ -6,13 +6,13 @@ import d.stoplist_be.domain.user.entity.User;
 public record UserResponse(
         Long userId,
         String nickname,
-        String personaName
+        Long personaId
 ) {
     public static UserResponse fromEntity(User user, Persona persona) {
         return new UserResponse(
                 user.getId(),
                 user.getNickname(),
-                persona.getName()
+                persona.getId()
         );
     }
 }

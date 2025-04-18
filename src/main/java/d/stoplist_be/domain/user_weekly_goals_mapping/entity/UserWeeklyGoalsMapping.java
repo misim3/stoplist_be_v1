@@ -25,4 +25,12 @@ public class UserWeeklyGoalsMapping extends BaseEntity {
 
     @Column
     private int goalsCount;
+
+    public void upCount() {
+        this.goalsCount++;
+    }
+
+    public void downCount() {
+        this.goalsCount--;
+    }
 }
