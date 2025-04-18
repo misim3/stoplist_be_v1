@@ -8,7 +8,7 @@ import d.stoplist_be.domain.user.dto.UserSignUpRequest;
 import d.stoplist_be.domain.user.entity.User;
 import d.stoplist_be.domain.user.repository.UserRepository;
 import d.stoplist_be.domain.user_persona_mapping.entity.UserPersonaMapping;
-import d.stoplist_be.domain.user_persona_mapping.repository.UserPersonaMappingRepository;
+import d.stoplist_be.domain.user_persona_mapping.repository.UserPersonaRepository;
 import d.stoplist_be.domain.user_weekly_goals_mapping.entity.Status;
 import d.stoplist_be.domain.user_weekly_goals_mapping.entity.UserWeeklyGoalsMapping;
 import d.stoplist_be.domain.user_weekly_goals_mapping.repository.UserWeeklyGoalsMappingRepository;
@@ -25,7 +25,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class UserService {
     private final UserRepository userRepository;
-    private final UserPersonaMappingRepository userPersonaMappingRepository;
+    private final UserPersonaRepository userPersonaMappingRepository;
     private final PersonaRepository personaRepository;
     private final UserWeeklyGoalsMappingRepository userWeeklyGoalsMappingRepository;
     private final WeeklyGoalRepository weeklyGoalRepository;

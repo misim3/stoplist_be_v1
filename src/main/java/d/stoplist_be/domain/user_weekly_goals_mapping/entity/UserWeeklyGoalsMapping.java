@@ -44,4 +44,8 @@ public class UserWeeklyGoalsMapping extends BaseEntity {
     public void downCount() {
         this.goalsCount--;
     }
+
+    public void updateStatus(Status status) {
+        this.status = status;
+    }
 }
