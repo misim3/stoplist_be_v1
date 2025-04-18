@@ -10,8 +10,8 @@ spring:
       max-lifetime: 60000
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/stoplist?characterEncoding=UTF-8&serverTimezone=UTC
-    username: root
-    password: root
+    username: misim3
+    password: misim3443
   jpa:
     hibernate:
       ddl-auto: update

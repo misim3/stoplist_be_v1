@@ -5,8 +5,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 
 @Entity
-@Getter
 @Table(name = "user_persona_mapping")
+@Getter
 public class UserPersonaMapping extends BaseEntity {
 
     @Id
@@ -22,5 +22,12 @@ public class UserPersonaMapping extends BaseEntity {
     public UserPersonaMapping(Long userId, Long personaId) {
         this.userId = userId;
         this.personaId = personaId;
+    }
+
+    public static UserPersonaMapping toEntity(Long userId, Long personaId) {
+        UserPersonaMapping userPersonaMapping = new UserPersonaMapping();
+        userPersonaMapping.userId = userId;
+        userPersonaMapping.personaId = personaId;
+        return userPersonaMapping;
     }
 }
