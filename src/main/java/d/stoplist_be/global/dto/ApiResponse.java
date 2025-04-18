@@ -5,7 +5,7 @@ import lombok.Generated;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ApiResponse<T> {
-    private final int status;
+    private final int statusCode;
 
     private final String message;
 
@@ -13,7 +13,7 @@ public class ApiResponse<T> {
 
     @Generated
     public int getStatus() {
-        return this.status;
+        return this.statusCode;
     }
 
     @Generated
@@ -27,8 +27,8 @@ public class ApiResponse<T> {
     }
 
     @Generated
-    public ApiResponse(final int status, final String message, final T data) {
-        this.status = status;
+    public ApiResponse(final int statusCode, final String message, final T data) {
+        this.statusCode = statusCode;
         this.message = message;
         this.data = data;
     }
