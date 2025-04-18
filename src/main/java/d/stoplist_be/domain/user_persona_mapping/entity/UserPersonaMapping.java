@@ -35,6 +35,7 @@ public class UserPersonaMapping extends BaseEntity {
     public UserPersonaMapping(Long userId, Long personaId) {
         this.userId = userId;
         this.personaId = personaId;
+        this.status = Status.ON;
     }
 
     public static UserPersonaMapping toEntity(Long userId, Long personaId) {
@@ -42,5 +43,9 @@ public class UserPersonaMapping extends BaseEntity {
         userPersonaMapping.userId = userId;
         userPersonaMapping.personaId = personaId;
         return userPersonaMapping;
+    }
+
+    public void updateStatus(Status status) {
+        this.status = status;
     }
 }

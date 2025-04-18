@@ -1,5 +1,6 @@
 package d.stoplist_be.domain.persona.entity;
 
+import d.stoplist_be.domain.user_weekly_goals_mapping.entity.Status;
 import d.stoplist_be.global.entity.BaseEntity;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -15,4 +16,5 @@ public class Persona extends BaseEntity {
 
     @Column
     private String name;
+
 }

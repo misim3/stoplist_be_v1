@@ -14,6 +14,8 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -30,40 +32,22 @@ public class BadgeService {
     }
 
     public List<BadgeUserResponse> getBadgeByUser(Long userId) {
-        User user = userRepository.findById(userId).orElseThrow(
-                () -> new IllegalArgumentException("유저를 찾을 수 없습니다.")
-        );
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new IllegalArgumentException("유저를 찾을 수 없습니다."));
 
-        List<Badge> badgeList = badgeRepository.findAll();
-        List<UserBadgeMapping> userBadgeMappingList = userBadgeMappingRepository.findAllByUserId(user.getId());
-        List<BadgeUserResponse> badgeResponseList = new ArrayList<>();
-        for (Badge badge : badgeList) {
-            if (!userBadgeMappingList.isEmpty()){
-                for (UserBadgeMapping userBadgeMapping : userBadgeMappingList) {
-                    if (Objects.equals(userBadgeMapping.getBadgeId(), badge.getId())){
-                        badgeResponseList.add(
-                                new BadgeUserResponse(
-                                        badge.getName(),
-                                        true
-                                )
-                        );
-                    } else {
-                        badgeResponseList.add(
-                                new BadgeUserResponse(
-                                        badge.getName(),
-                                        false
-                                )
-                        );
-                    }
-                }
-            }
-            badgeResponseList.add(
-                    new BadgeUserResponse(
-                            badge.getName(),
-                            false
-                    )
-            );
-        }
-        return badgeResponseList;
+        // 1) 유저가 획득한 badgeId 집합 생성
+        Set<Long> ownedBadgeIds = userBadgeMappingRepository
+                .findAllByUserId(userId).stream()
+                .map(UserBadgeMapping::getBadgeId)
+                .collect(Collectors.toSet());
+
+        // 2) 모든 badge 순회하며, 소유 여부만 체크해 DTO 생성
+        return badgeRepository.findAll().stream()
+                .map(badge -> new BadgeUserResponse(
+                        badge.getName(),
+                        ownedBadgeIds.contains(badge.getId())
+                ))
+                .collect(Collectors.toList());
     }
+
 }
