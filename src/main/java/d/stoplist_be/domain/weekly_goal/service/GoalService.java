@@ -24,10 +24,9 @@ public class GoalService {
     }
 
     public GetGoalResponseDto getGoal(Long userId) {
-        System.out.println(userId);
         UserWeeklyGoalsMapping mapping = userWeeklyGoalsMappingRepository.findByUserIdAndStatus(userId,
             Status.ON).stream()
-            .max(Comparator.comparing(BaseEntity::getUpdatedAt))
+            .min(Comparator.comparing(BaseEntity::getCreatedAt))
             .orElseThrow(() -> new RuntimeException("Not found user weekly_goal mapping GoalService.getGoal"));
 
         WeeklyGoal goal = goalRepository.findById(mapping.getWeeklyGoalsId()).orElseThrow(() -> new RuntimeException("Not found weekly_goal mapping GoalService.getGoal"));
