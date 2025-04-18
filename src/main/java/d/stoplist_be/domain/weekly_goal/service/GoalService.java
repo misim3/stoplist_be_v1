@@ -1,18 +1,16 @@
 package d.stoplist_be.domain.weekly_goal.service;
 
-import d.stoplist_be.domain.user.repository.UserRepository;
-import d.stoplist_be.domain.user_persona_mapping.entity.UserPersonaMapping;
 import d.stoplist_be.domain.user_weekly_goals_mapping.entity.Status;
 import d.stoplist_be.domain.user_weekly_goals_mapping.entity.UserWeeklyGoalsMapping;
-import d.stoplist_be.domain.user_weekly_goals_mapping.entity.UserWeeklyGoalsMappingRepository;
+import d.stoplist_be.domain.user_weekly_goals_mapping.repository.UserWeeklyGoalsMappingRepository;
 import d.stoplist_be.domain.weekly_goal.GetGoalResponseDto;
 import d.stoplist_be.domain.weekly_goal.entity.WeeklyGoal;
 import d.stoplist_be.domain.weekly_goal.repository.WeeklyGoalRepository;
 import d.stoplist_be.global.entity.BaseEntity;
+import org.springframework.stereotype.Service;
+
 import java.time.LocalDate;
 import java.util.Comparator;
-import java.util.List;
-import org.springframework.stereotype.Service;
 
 @Service
 public class GoalService {
@@ -26,7 +24,7 @@ public class GoalService {
     }
 
     public GetGoalResponseDto getGoal(Long userId) {
-
+        System.out.println(userId);
         UserWeeklyGoalsMapping mapping = userWeeklyGoalsMappingRepository.findByUserIdAndStatus(userId,
             Status.ON).stream()
             .max(Comparator.comparing(BaseEntity::getUpdatedAt))
