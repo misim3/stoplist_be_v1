@@ -33,6 +33,3 @@ https://github.com/user-attachments/assets/3f91462c-dbb4-4421-9bbb-4b577582c2ee
 https://github.com/user-attachments/assets/d4f92140-1f40-4961-9634-a9677c2262e8
 
 <img width="371" alt="스크린샷 2025-04-19 오전 8 36 40" src="https://github.com/user-attachments/assets/118c7e53-f812-4c2f-bc20-6af8f32fccbc" />
-
-## 참고자료
-[포트폴리오](https://curious-raver-f98.notion.site/2032515049b9805cb3dac1f4ba2ce135#2062515049b98053bbc3d0eb5bab5686)
